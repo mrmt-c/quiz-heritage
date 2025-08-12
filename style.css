@@ -1,0 +1,82 @@
+/* 🌿 画面全体の見た目を整えるよ */
+body {
+  font-family: "Noto Sans JP", "Helvetica", sans-serif; /* 読みやすくて落ち着いた文字にするよ */
+  background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); /* グレー系のグラデーションで大人っぽくするよ */
+  color: #333; /* 文字の色は少し濃いグレーにして読みやすくするよ */
+  text-align: center; /* 文字やボタンをまんなかにそろえるよ */
+  padding: 30px; /* 画面のまわりにすきまをつけて、ぎゅうぎゅうにならないようにするよ */
+  margin: 0; /* 余計な外側のすきまをなくすよ */
+}
+
+/* 🏷️ タイトルの見た目をきれいにするよ */
+h1 {
+  color: #2c3e50; /* 落ち着いた青っぽい色にするよ */
+  font-size: 2.2em; /* ちょっと大きめの文字にするよ */
+  margin-bottom: 20px; /* タイトルの下にすきまをあけるよ */
+}
+
+/* 👻 「非表示」にしたい場所のためのルールだよ */
+.hidden {
+  display: none; /* 見えなくするよ */
+}
+
+/* 🎯 ボタンの見た目をシンプルにかっこよくするよ */
+button {
+  border: none; /* ふちはなしにするよ */
+  padding: 12px 24px; /* ボタンの中の余白を広めにとるよ */
+  margin: 10px; /* ボタン同士のすきまをあけるよ */
+  font-size: 1em; /* 文字の大きさはふつうくらいにするよ */
+  border-radius: 8px; /* ボタンのすみを少し丸くするよ */
+  background-color: #3498db; /* 青色のボタンにするよ（落ち着いた感じ） */
+  color: white; /* 文字の色は白にして見やすくするよ */
+  cursor: pointer; /* マウスをのせると「指アイコン」に変わるよ */
+  transition: background-color 0.3s; /* 色が変わるとき、ゆっくり変化するよ */
+}
+
+/* 🖱️ ボタンにマウスをのせたときの見た目だよ */
+button:hover {
+  background-color: #2980b9; /* 少し濃い青に変わって、反応がわかりやすくなるよ */
+}
+
+/* 📘 問題文（Q1とか）の見出しの見た目だよ */
+h3 {
+  color: #34495e; /* ちょっと濃い青でしっかり見せるよ */
+  font-size: 1.4em; /* 少し大きめの文字にするよ */
+  margin-top: 30px; /* 上とのすきまを広げるよ */
+}
+
+/* 📦 クイズを表示する場所の見た目だよ */
+#quiz-container {
+  max-width: 600px; /* 横幅を広すぎないようにするよ（スマホでも見やすく） */
+  margin: auto; /* 真ん中に表示するよ */
+  background-color: #ffffff; /* 白い背景で読みやすくするよ */
+  border-radius: 12px; /* 角をまるくしてやさしい印象にするよ */
+  padding: 20px; /* 中の余白をつけて見やすく！ */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* うっすら影をつけて立体感を出すよ */
+}
+
+/* 📱 スマホでも見やすくするためのルールだよ */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 15px; /* スマホでは余白を少しせまくするよ */
+  }
+
+  h1 {
+    font-size: 1.6em; /* タイトルの文字を少し小さくするよ */
+  }
+
+  h3 {
+    font-size: 1.2em; /* 問題文も少し小さくしてバランスをとるよ */
+  }
+
+  button {
+    width: 100%; /* ボタンを画面いっぱいに広げて押しやすくするよ */
+    font-size: 1em; /* 文字の大きさはそのままにするよ */
+    margin: 8px 0; /* 上下にすきまをつけて並べるよ */
+  }
+
+  #quiz-container {
+    padding: 15px; /* 中の余白も少しせまくして、画面におさまるようにするよ */
+    font-size: 1em; /* 全体の文字サイズを調整するよ */
+  }
+}
