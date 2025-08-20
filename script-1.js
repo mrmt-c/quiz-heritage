@@ -42,9 +42,11 @@ function showQuestion(index) {
 
   quizContainer.innerHTML = `
     <h3>Q${index + 1}: ${data.question}</h3>
+    <div class="choices">
     ${data.choices.map((choice, i) => `
       <button class="choice-btn" onclick="checkAnswer(${i})">${choice}</button>
     `).join("")}
+    </div>
     <div id="feedback" style="margin-top:10px;"></div> <!-- 解説や次のボタンを出す場所 -->
   `;
 }
