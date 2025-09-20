@@ -1,7 +1,7 @@
 /* 🌿 画面全体の見た目を整えるよ */
 body {
   font-family: "Noto Sans JP", "Helvetica", sans-serif; /* 読みやすくて落ち着いた文字にするよ */
-  background: #c7efce; /* 淡いグリーン系 */
+  background: #b7d0bb; /* 淡いグリーン系 */
 /*  background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); /* グレー系のグラデーションで大人っぽくするよ */
   color: #333; /* 文字の色は少し濃いグレーにして読みやすくするよ */
   text-align: center; /* 文字やボタンをまんなかにそろえるよ */
@@ -18,7 +18,7 @@ h1 {
 
 /* 👻 「非表示」にしたい場所のためのルールだよ */
 .hidden {
-  display: none; /* 見えなくするよ */
+  display: none !important; /* 見えなくするよ */
 }
 
 /* 🎯 ボタンの見た目をシンプルにかっこよくするよ */
@@ -56,6 +56,20 @@ h3 {
   box-shadow: 0 0 10px rgba(0,0,0,0.1); /* うっすら影をつけて立体感を出すよ */
 }
 
+/* 🎯 コース選択ボタンを並べる場所のスタイルだよ */
+#start-screen {
+  display: flex;
+  flex-direction: column; /* ← 縦に並べるよ！ */
+  align-items: center;    /* ← ボタンを中央にそろえるよ */
+  gap: 12px;              /* ← ボタンの間にすきまをつけるよ */
+  margin-top: 20px;
+}
+
+.course-button {
+  width: 100%;
+  max-width: 300px;        /* ← 横幅をそろえて見やすくするよ */
+}
+
 /* 🎯 選択肢ボタンを並べる場所のスタイルだよ */
 .choices {
   display: flex;
@@ -91,6 +105,8 @@ h3 {
 
   h3 {
     font-size: 1.2em; /* 問題文も少し小さくしてバランスをとるよ */
+    margin-top: 30px;
+    word-break: break-word; /* ← 問題文が切れないようにするよ */
   }
 
   button {
@@ -100,7 +116,15 @@ h3 {
   }
 
   #quiz-container {
-    padding: 15px; /* 中の余白も少しせまくして、画面におさまるようにするよ */
-    font-size: 1.2em; /* 全体の文字サイズを調整するよ */
+    max-width: 600px;
+    margin: auto;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    word-wrap: break-word;       /* ← 長い単語も折り返すよ */
+    overflow-wrap: break-word;   /* ← 解説文なども切れずに表示するよ */
   }
+
+#feedback {
+  word-break: break-word; /* ← 解説文が切れないようにするよ */}
 }
