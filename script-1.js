@@ -1,24 +1,48 @@
 // 📦 Googleスプレッドシートからクイズデータをとってくるよ
-const sheetUrl = "https://docs.google.com/spreadsheets/d/1s2MpuwqZ75-Jo6bg7pdXGfcLWGudfRQb8TbS9ZIJ6lk/export?format=csv&gid=0";
+function getSheetUrl(courseName) {
+  // コース名に応じてGoogleスプレッドシートのURLを切り替えるよ
+  const sheetUrls = {
+    basic: "https://docs.google.com/spreadsheets/d/1s2MpuwqZ75-Jo6bg7pdXGfcLWGudfRQb8TbS9ZIJ6lk/export?format=csv&gid=0",
+    japan: "https://docs.google.com/spreadsheets/d/1TTXHc6l5FmNBiVNeJVuXmAm1tWXTsXlDrego6F-iKr0/export?format=csv&gid=0",
+    world: "https://docs.google.com/spreadsheets/d/1lkSH8G9eCVJLVs8nix3DPgyDXi3eLz-QdzNtU9ZChaM/export?format=csv&gid=0"
+  };
+  return sheetUrls[courseName] || sheetUrls['basic']; // デフォルトは'basic'コース
+};
+//const sheetUrl = sheetUrls[courseName]; // ← ここで選ばれたコース名に応じたURLを取り出す！
+
+// const sheetUrl = "https://docs.google.com/spreadsheets/d/1s2MpuwqZ75-Jo6bg7pdXGfcLWGudfRQb8TbS9ZIJ6lk/export?format=csv&gid=0";
 
 // 🧩 HTMLのいろんな場所を見つけておくよ
 const startScreen = document.getElementById("start-screen");      // スタート画面
-const startButton = document.getElementById("start-button");      // スタートボタン
+const startButton = document.getElementById("start-button");      // スタートボタン　
 const quizContainer = document.getElementById("quiz-container");  // クイズ表示エリア
 
 let quizData = [];       // クイズデータをしまっておく箱
 let correctCount = 0;  // 正解した数をかぞえるよ（はじめは0問！）★
 let currentIndex = 0;    // 今の問題の番号（0が1問目だよ）
 
-// 🚀 スタートボタンを押したらクイズを始めるよ
-startButton.onclick = () => {
-  startScreen.classList.add("hidden");       // スタート画面を隠すよ
-  quizContainer.classList.remove("hidden");  // クイズ画面を出すよ
-  loadQuiz();                                 // クイズのデータをとってくるよ
-};
+const courseButtons = document.querySelectorAll(".course-button");
+let selectedCourse = ""; // 選ばれたコース名を保存しておくよ
+
+courseButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    selectedCourse = button.getAttribute("data-course");
+    startScreen.classList.add("hidden");
+    quizContainer.classList.remove("hidden");
+    const url = getSheetUrl(selectedCourse); // ← URLを取り出す関数を呼ぶ
+    loadQuiz(url); // コース名を渡してクイズを読み込むよ
+  });
+});
+
+// 🚀 スタートボタンを押したらクイズを始めるよ -> コース選択にしたのでスタートボタンは使わない
+// startButton.onclick = () => {
+//   startScreen.classList.add("hidden");       // スタート画面を隠すよ
+//   quizContainer.classList.remove("hidden");  // クイズ画面を出すよ
+//  loadQuiz();                                 // クイズのデータをとってくるよ
+// };
 
 // 📥 クイズデータをとってくる関数だよ
-function loadQuiz() {
+function loadQuiz(sheetUrl) {
   fetch(sheetUrl)
     .then(response => response.text())
     .then(csv => {
@@ -101,4 +125,4 @@ window.goToStart = function() {
   correctCount = 0;  // また0問からスタートするよ！★
   startScreen.classList.remove("hidden"); // スタート画面を表示
   quizContainer.classList.add("hidden");  // クイズ画面をかくすよ
-};
+}
