@@ -1,7 +1,8 @@
 /* 🌿 画面全体の見た目を整えるよ */
 body {
   font-family: "Noto Sans JP", "Helvetica", sans-serif; /* 読みやすくて落ち着いた文字にするよ */
-  background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); /* グレー系のグラデーションで大人っぽくするよ */
+  background: #c7efce; /* 淡いグリーン系 */
+/*  background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); /* グレー系のグラデーションで大人っぽくするよ */
   color: #333; /* 文字の色は少し濃いグレーにして読みやすくするよ */
   text-align: center; /* 文字やボタンをまんなかにそろえるよ */
   padding: 30px; /* 画面のまわりにすきまをつけて、ぎゅうぎゅうにならないようにするよ */
@@ -27,7 +28,7 @@ button {
   margin: 10px; /* ボタン同士のすきまをあけるよ */
   font-size: 1em; /* 文字の大きさはふつうくらいにするよ */
   border-radius: 8px; /* ボタンのすみを少し丸くするよ */
-  background-color: #3498db; /* 青色のボタンにするよ（落ち着いた感じ） */
+  background-color: #5c6f7b; /* 落ち着いたブルグレー */
   color: white; /* 文字の色は白にして見やすくするよ */
   cursor: pointer; /* マウスをのせると「指アイコン」に変わるよ */
   transition: background-color 0.3s; /* 色が変わるとき、ゆっくり変化するよ */
@@ -35,7 +36,7 @@ button {
 
 /* 🖱️ ボタンにマウスをのせたときの見た目だよ */
 button:hover {
-  background-color: #2980b9; /* 少し濃い青に変わって、反応がわかりやすくなるよ */
+  background-color: #4a5a65; /* 少し濃い目に変わって、反応がわかりやすくなるよ */
 }
 
 /* 📘 問題文（Q1とか）の見出しの見た目だよ */
@@ -49,7 +50,7 @@ h3 {
 #quiz-container {
   max-width: 600px; /* 横幅を広すぎないようにするよ（スマホでも見やすく） */
   margin: auto; /* 真ん中に表示するよ */
-  background-color: #ffffff; /* 白い背景で読みやすくするよ */
+  background-color: #e6e6e6; /* 白い背景で読みやすくするよ */
   border-radius: 12px; /* 角をまるくしてやさしい印象にするよ */
   padding: 20px; /* 中の余白をつけて見やすく！ */
   box-shadow: 0 0 10px rgba(0,0,0,0.1); /* うっすら影をつけて立体感を出すよ */
@@ -58,9 +59,13 @@ h3 {
 /* 🎯 選択肢ボタンを並べる場所のスタイルだよ */
 .choices {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+}
+.choice-btn {
+  width: 100%;
+  max-width: 300px; /* ← ボタンの横幅をそろえて見やすくするよ */
 }
 
 /* 📱 スマホでも見やすくするためのルールだよ */
