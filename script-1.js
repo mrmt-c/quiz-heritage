@@ -4,7 +4,11 @@ function getSheetUrl(courseName) {
   const sheetUrls = {
     basic: "https://docs.google.com/spreadsheets/d/1s2MpuwqZ75-Jo6bg7pdXGfcLWGudfRQb8TbS9ZIJ6lk/export?format=csv&gid=0",
     japan: "https://docs.google.com/spreadsheets/d/1TTXHc6l5FmNBiVNeJVuXmAm1tWXTsXlDrego6F-iKr0/export?format=csv&gid=0",
-    world: "https://docs.google.com/spreadsheets/d/1lkSH8G9eCVJLVs8nix3DPgyDXi3eLz-QdzNtU9ZChaM/export?format=csv&gid=0"
+    world1: "https://docs.google.com/spreadsheets/d/1lkSH8G9eCVJLVs8nix3DPgyDXi3eLz-QdzNtU9ZChaM/export?format=csv&gid=0",
+    world2: "https://docs.google.com/spreadsheets/d/1aLj9099i_zDOifH1HKkoUG4VUpipN9vbe3MDmieii24/export?format=csv&gid=0",
+    world3: "https://docs.google.com/spreadsheets/d/1pn6WHaYKKG-9d5rzGztN6VSZasYCeJeR8MeMxmYqyfU/export?format=csv&gid=0",
+    world4: "https://docs.google.com/spreadsheets/d/1m88xVix70g3VYLl0H2DlPtW0yMubz9kBuUx6HZ82gp8/export?format=csv&gid=0",
+    world5: "https://docs.google.com/spreadsheets/d/1Bp-zXfhOxwceE19PTCfqC9QGzrx1yk2vTqj1xUHOcco/export?format=csv&gid=0"
   };
   return sheetUrls[courseName] || sheetUrls['basic']; // デフォルトは'basic'コース
 };
