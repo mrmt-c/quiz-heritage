@@ -56,6 +56,9 @@ h3 {
   box-shadow: 0 0 10px rgba(0,0,0,0.1); /* うっすら影をつけて立体感を出すよ */
 }
 
+#feedback {
+  word-break: break-word; /* ← 解説文が切れないようにするよ */}
+
 /* 🎯 コース選択ボタンを並べる場所のスタイルだよ */
 #start-screen {
   display: flex;
@@ -85,8 +88,9 @@ h3 {
 /* 📱 スマホでも見やすくするためのルールだよ */
 @media screen and (max-width: 600px) {
   body {
-    padding: 15px; /* スマホでは余白を少しせまくするよ */
-    font-size: 1.2em;
+    padding: 20px; /* スマホでは余白を少しせまくするよ */
+    font-size: 1.4em;
+    background-color: #eeeac9; /* 落ち着いたベージュ */
   }
 
    /* 🎯 選択肢ボタンを縦に並べるよ（スマホ用） */
@@ -111,12 +115,13 @@ h3 {
 
   button {
     width: 100%; /* ボタンを画面いっぱいに広げて押しやすくするよ */
+    max-width: 320px; /* でもあんまり広がりすぎないようにするよ */
     font-size: 1em; /* 文字の大きさはそのままにするよ */
     margin: 8px 0; /* 上下にすきまをつけて並べるよ */
   }
 
   #quiz-container {
-    max-width: 600px;
+    max-width: 90vw; /* 画面幅の90%まで広げるよ */
     margin: auto;
     border-radius: 12px;
     padding: 20px;
@@ -125,6 +130,4 @@ h3 {
     overflow-wrap: break-word;   /* ← 解説文なども切れずに表示するよ */
   }
 
-#feedback {
-  word-break: break-word; /* ← 解説文が切れないようにするよ */}
 }
