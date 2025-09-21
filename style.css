@@ -89,22 +89,24 @@ h3 {
 @media screen and (max-width: 600px) {
   body {
     padding: 20px; /* スマホでは余白を少しせまくするよ */
-    font-size: 1.4em;
+    font-size: 1.2em;
     background-color: #eeeac9; /* 落ち着いたベージュ */
   }
 
    /* 🎯 選択肢ボタンを縦に並べるよ（スマホ用） */
   .choices {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
   }
 
   .choice-btn {
-    width: 100%;
+    width: 90vw; /* 画面幅の90%まで広げるよ */
+    max-width: 320px; /* ボタンの横幅をそろえて見やすくするよ */
   }
 
   h1 {
-    font-size: 1.6em; /* タイトルの文字を少し小さくするよ */
+    font-size: 1.4em; /* タイトルの文字を少し小さくするよ */
   }
 
   h3 {
