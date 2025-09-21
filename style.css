@@ -2,7 +2,6 @@
 body {
   font-family: "Noto Sans JP", "Helvetica", sans-serif; /* 読みやすくて落ち着いた文字にするよ */
   background: #b7d0bb; /* 淡いグリーン系 */
-/*  background: linear-gradient(to bottom right, #f0f0f0, #dcdcdc); /* グレー系のグラデーションで大人っぽくするよ */
   color: #333; /* 文字の色は少し濃いグレーにして読みやすくするよ */
   text-align: center; /* 文字やボタンをまんなかにそろえるよ */
   padding: 30px; /* 画面のまわりにすきまをつけて、ぎゅうぎゅうにならないようにするよ */
@@ -57,7 +56,8 @@ h3 {
 }
 
 #feedback {
-  word-break: break-word; /* ← 解説文が切れないようにするよ */}
+  word-break: break-word; /* ← 解説文が切れないようにするよ */
+}
 
 /* 🎯 コース選択ボタンを並べる場所のスタイルだよ */
 #start-screen {
