@@ -47,6 +47,9 @@ courseButtons.forEach(button => {
 
 // 📥 クイズデータをとってくる関数だよ
 function loadQuiz(sheetUrl) {
+  quizData = []; // 前のデータを消す
+  currentIndex = 0; // インデックスをリセット
+  quizContainer.innerHTML = "<p>読み込み中...</p>"; // ローディング表示！
   fetch(sheetUrl)
     .then(response => response.text())
     .then(csv => {
