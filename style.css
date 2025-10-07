@@ -38,6 +38,19 @@ button:hover {
   background-color: #4a5a65; /* 少し濃い目に変わって、反応がわかりやすくなるよ */
 }
 
+/* 🔙 レベル選択にもどるボタンだけ色を変えるよ */
+.back-button {
+  background-color: #a67c52; /* 落ち着いたブラウン系 */
+  color: #fff;               /* 文字は白で見やすく */
+  width: 100%;
+  max-width: 300px;
+  gap: 10px;
+}
+
+.back-button:hover {
+  background-color: #8c6847; /* ホバー時は少し濃くして反応をわかりやすくするよ */
+}
+
 /* 📘 問題文（Q1とか）の見出しの見た目だよ */
 h3 {
   color: #34495e; /* ちょっと濃い青でしっかり見せるよ */
@@ -64,13 +77,27 @@ h3 {
   display: flex;
   flex-direction: column; /* ← 縦に並べるよ！ */
   align-items: center;    /* ← ボタンを中央にそろえるよ */
-  gap: 12px;              /* ← ボタンの間にすきまをつけるよ */
+  gap: 10px;              /* ← ボタンの間にすきまをつけるよ */
   margin-top: 20px;
+}
+
+.level-button {
+  width: 100%;
+  max-width: 300px;
 }
 
 .course-button {
   width: 100%;
   max-width: 300px;        /* ← 横幅をそろえて見やすくするよ */
+}
+
+/* 🎯 コース選択画面のボタンを縦に並べるよ */
+#course-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 /* 🎯 選択肢ボタンを並べる場所のスタイルだよ */
@@ -100,9 +127,22 @@ h3 {
     align-items: center;
   }
 
-  .choice-btn {
+  #course-buttons,
+  #start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .choice-btn,
+  .course-button,
+  .back-button{
     width: 90vw; /* 画面幅の90%まで広げるよ */
     max-width: 320px; /* ボタンの横幅をそろえて見やすくするよ */
+    margin: 10px 0;
+    box-sizing: border-box;
+    font-size: 1em;
+    padding: 12px 24px;
   }
 
   h1 {
