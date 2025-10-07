@@ -2,6 +2,11 @@
 function getSheetUrl(courseName) {
   // コース名に応じてGoogleスプレッドシートのURLを切り替えるよ
   const sheetUrls = {
+// ノーマルレベルのコース
+    basicN: "https://docs.google.com/spreadsheets/d/1FrZmlShhwG4GanMQLjwY5wGJQ5NQrrYIE2nJOZA1B0A/export?format=csv&gid=0",
+    japanN: "https://docs.google.com/spreadsheets/d/1ppAPyZx08pD_ktUV0WTxCD0Uf1yohdUZm86u3X75McE/export?format=csv&gid=0",
+    world: "https://docs.google.com/spreadsheets/d/1Ups2ZBBIP5E7rpNYtb8ZZkPgGIlxbBNAz4-9q4fNoy0/export?format=csv&gid=0",
+// チャレンジレベルのコース
     basic: "https://docs.google.com/spreadsheets/d/1s2MpuwqZ75-Jo6bg7pdXGfcLWGudfRQb8TbS9ZIJ6lk/export?format=csv&gid=0",
     japan: "https://docs.google.com/spreadsheets/d/1TTXHc6l5FmNBiVNeJVuXmAm1tWXTsXlDrego6F-iKr0/export?format=csv&gid=0",
     world1: "https://docs.google.com/spreadsheets/d/1lkSH8G9eCVJLVs8nix3DPgyDXi3eLz-QdzNtU9ZChaM/export?format=csv&gid=0",
@@ -12,13 +17,10 @@ function getSheetUrl(courseName) {
   };
   return sheetUrls[courseName] || sheetUrls['basic']; // デフォルトは'basic'コース
 };
-//const sheetUrl = sheetUrls[courseName]; // ← ここで選ばれたコース名に応じたURLを取り出す！
-
-// const sheetUrl = "https://docs.google.com/spreadsheets/d/1s2MpuwqZ75-Jo6bg7pdXGfcLWGudfRQb8TbS9ZIJ6lk/export?format=csv&gid=0";
 
 // 🧩 HTMLのいろんな場所を見つけておくよ
 const startScreen = document.getElementById("start-screen");      // スタート画面
-const startButton = document.getElementById("start-button");      // スタートボタン　
+//　const startButton = document.getElementById("start-button");      // スタートボタン　
 const quizContainer = document.getElementById("quiz-container");  // クイズ表示エリア
 
 let quizData = [];       // クイズデータをしまっておく箱
@@ -28,22 +30,76 @@ let currentIndex = 0;    // 今の問題の番号（0が1問目だよ）
 const courseButtons = document.querySelectorAll(".course-button");
 let selectedCourse = ""; // 選ばれたコース名を保存しておくよ
 
-courseButtons.forEach(button => {
+// 🧭 レベル選択ボタンを見つけるよ（HTMLにある .level-button を全部取得！）
+const levelButtons = document.querySelectorAll(".level-button");
+
+// 🧭 コース選択画面とボタン表示エリアを見つけるよ
+const courseScreen = document.getElementById("course-screen");
+const courseButtonsContainer = document.getElementById("course-buttons");
+
+// 🗂️ レベルごとに表示するコースをまとめておくよ
+const courseGroups = {
+  normal: [
+    { name: "basicN", label: "基礎知識" },
+    { name: "japanN", label: "日本の世界遺産" },
+    { name: "world", label: "世界の世界遺産" }
+  ],
+  challenge: [
+    { name: "basic", label: "基礎知識" },
+    { name: "japan", label: "日本の世界遺産" },
+    { name: "world1", label: "アジア" },
+    { name: "world2", label: "アフリカ" },
+    { name: "world3", label: "アメリカ" },
+    { name: "world4", label: "ヨーロッパ" },
+    { name: "world5", label: "オセアニア" }
+  ]
+};
+
+// 🧩 レベルボタンを押したら、対応するコースボタンを表示するよ！
+levelButtons.forEach(button => {
   button.addEventListener("click", () => {
-    selectedCourse = button.getAttribute("data-course");
-    startScreen.classList.add("hidden");
-    quizContainer.classList.remove("hidden");
-    const url = getSheetUrl(selectedCourse); // ← URLを取り出す関数を呼ぶ
-    loadQuiz(url); // コース名を渡してクイズを読み込むよ
+    const selectedLevel = button.getAttribute("data-level"); // "normal" か "challenge"
+    startScreen.classList.add("hidden");     // レベル選択画面を隠すよ
+    courseScreen.classList.remove("hidden"); // コース選択画面を表示するよ
+    courseButtonsContainer.innerHTML = "";   // 前のボタンを消しておくよ
+
+    // レベルに応じたコースボタンを作って並べるよ
+    courseGroups[selectedLevel].forEach(course => {
+      const btn = document.createElement("button");
+      btn.textContent = course.label;
+      btn.classList.add("course-button");
+      btn.setAttribute("data-course", course.name);
+      courseButtonsContainer.appendChild(btn);
+
+      // ✅ コースボタンを押したらクイズを読み込むよ（Googleスプレッドシートの読み込み！）
+      btn.addEventListener("click", () => {
+        selectedCourse = course.name;
+        courseScreen.classList.add("hidden");
+        quizContainer.classList.remove("hidden");
+        const url = getSheetUrl(selectedCourse); // URLを取得するよ
+        loadQuiz(url); // クイズを読み込むよ！
+      });
+    });
   });
 });
+// 🧭 「レベル選択にもどる」ボタンを見つけるよ
+const backToLevelButton = document.getElementById("back-to-level");
 
-// 🚀 スタートボタンを押したらクイズを始めるよ -> コース選択にしたのでスタートボタンは使わない
-// startButton.onclick = () => {
-//   startScreen.classList.add("hidden");       // スタート画面を隠すよ
-//   quizContainer.classList.remove("hidden");  // クイズ画面を出すよ
-//  loadQuiz();                                 // クイズのデータをとってくるよ
-// };
+backToLevelButton.addEventListener("click", () => {
+  courseScreen.classList.add("hidden");     // コース選択画面を隠すよ
+  startScreen.classList.remove("hidden");   // レベル選択画面を表示するよ
+});
+
+// レベル選択機能を追加したのでここはコメント　
+// courseButtons.forEach(button => {
+//   button.addEventListener("click", () => {
+//     selectedCourse = button.getAttribute("data-course");
+//     startScreen.classList.add("hidden");
+//     quizContainer.classList.remove("hidden");
+//     const url = getSheetUrl(selectedCourse); // ← URLを取り出す関数を呼ぶ
+//     loadQuiz(url); // コース名を渡してクイズを読み込むよ
+//   });
+// });
 
 // 📥 クイズデータをとってくる関数だよ
 function loadQuiz(sheetUrl) {
@@ -103,14 +159,14 @@ window.checkAnswer = function(selectedIndex) {
   if (currentIndex < quizData.length - 1) {
     resultText += `
       <button onclick="goToNext()">次の問題へ</button>
-      <button onclick="goToStart()">スタートへもどる</button>
+      <button onclick="goToCourseSelect()">コース選択へもどる</button>
     `;
   } else {
     resultText += `
     <p>　</p>
     <p>これで問題は終わりです</p>
     <p>全${quizData.length}問中、${correctCount}問正解でした！</p>
-    <button onclick="goToStart()">スタートへもどる</button>`;
+    <button onclick="goToCourseSelect()">コース選択へもどる</button>`;
   }
 
   feedback.innerHTML = resultText;
@@ -133,3 +189,11 @@ window.goToStart = function() {
   startScreen.classList.remove("hidden"); // スタート画面を表示
   quizContainer.classList.add("hidden");  // クイズ画面をかくすよ
 }
+
+// 🔁 コース選択画面にもどる関数だよ
+window.goToCourseSelect = function() {
+  currentIndex = 0;
+  correctCount = 0;
+  quizContainer.classList.add("hidden");     // クイズ画面をかくすよ
+  courseScreen.classList.remove("hidden");   // コース選択画面を表示するよ
+};
