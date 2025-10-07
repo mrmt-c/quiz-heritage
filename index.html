@@ -10,15 +10,17 @@
   <!-- スタート画面 -->
   <div id="start-screen">
     <h1>🌍 世界遺産クイズ 🌏</h1>
-    <h3>コースを選んでね！</h3>
-    <button class="course-button" data-course="basic">基礎知識</button>
-    <button class="course-button" data-course="japan">日本の世界遺産</button>
-    <button class="course-button" data-course="world1">世界の世界遺産；アジア</button>
-    <button class="course-button" data-course="world2">世界の世界遺産；アフリカ</button>
-    <button class="course-button" data-course="world3">世界の世界遺産；アメリカ</button>
-    <button class="course-button" data-course="world4">世界の世界遺産；ヨーロッパ</button>
-    <button class="course-button" data-course="world5">世界の世界遺産；オセアニア</button>
- </div>
+  <h3>レベルを選んでね！</h3>
+  <button class="level-button" data-level="normal">ノーマル</button>
+  <button class="level-button" data-level="challenge">チャレンジ</button>
+  チャレンジは「世界遺産検定 1級」テキスト相当<br>
+</div>
+<!-- コース選択画面 -->
+<div id="course-screen" class="hidden">
+  <h3>コースを選んでね！</h3>
+  <div id="course-buttons"></div>
+  <button id="back-to-level" class="back-button">レベル選択にもどる</button>
+</div>
   <!-- クイズ画面 -->
   <div id="quiz-container" class="hidden"></div>
   <div id="quiz"></div>
