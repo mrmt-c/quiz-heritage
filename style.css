@@ -116,7 +116,7 @@ h3 {
 @media screen and (max-width: 600px) {
   body {
     padding: 20px; /* スマホでは余白を少しせまくするよ */
-    font-size: 0.8em;
+    font-size: 1.0em;
     background-color: #eeeac9; /* 落ち着いたベージュ */
   }
 
@@ -158,7 +158,7 @@ h3 {
   button {
     width: 100%; /* ボタンを画面いっぱいに広げて押しやすくするよ */
     max-width: 320px; /* でもあんまり広がりすぎないようにするよ */
-    font-size: 1em; /* 文字の大きさはそのままにするよ */
+    font-size: 1.0em; /* 文字の大きさはそのままにするよ */
     margin: 6px 0; /* 上下にすきまをつけて並べるよ */
   }
 
@@ -173,4 +173,5 @@ h3 {
   }
 
 }
+
 
