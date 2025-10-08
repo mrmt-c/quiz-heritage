@@ -116,7 +116,7 @@ h3 {
 @media screen and (max-width: 600px) {
   body {
     padding: 20px; /* スマホでは余白を少しせまくするよ */
-    font-size: 1.2em;
+    font-size: 0.8em;
     background-color: #eeeac9; /* 落ち着いたベージュ */
   }
 
@@ -141,12 +141,12 @@ h3 {
     max-width: 320px; /* ボタンの横幅をそろえて見やすくするよ */
     margin: 10px 0;
     box-sizing: border-box;
-    font-size: 1em;
+    font-size: 1.0em;
     padding: 12px 24px;
   }
 
   h1 {
-    font-size: 1.4em; /* タイトルの文字を少し小さくするよ */
+    font-size: 1.2em; /* タイトルの文字を少し小さくするよ */
   }
 
   h3 {
@@ -159,7 +159,7 @@ h3 {
     width: 100%; /* ボタンを画面いっぱいに広げて押しやすくするよ */
     max-width: 320px; /* でもあんまり広がりすぎないようにするよ */
     font-size: 1em; /* 文字の大きさはそのままにするよ */
-    margin: 8px 0; /* 上下にすきまをつけて並べるよ */
+    margin: 6px 0; /* 上下にすきまをつけて並べるよ */
   }
 
   #quiz-container {
@@ -173,3 +173,4 @@ h3 {
   }
 
 }
+
