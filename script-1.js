@@ -146,10 +146,10 @@ window.checkAnswer = function(selectedIndex) {
 
   // 🎯 正解かどうか調べるよ
   if (selectedIndex === current.correct) {
-    resultText = `<p style="color:green;">⭕ 正解！</p>`;
+    resultText = `<p style="color:green; font-size:1.4em;">⭕ 正解！</p>`;
     correctCount++;  // 正解だったら1問ふやすよ！★
   } else {
-    resultText = `<p style="color:red;">❌ ざんねん…</p>`;
+    resultText = `<p style="color:blue; font-size:1.4em;">❌ ざんねん…</p>`;
   }
 
   // 📚 解説を表示するよ
