@@ -119,8 +119,27 @@ function loadQuiz(sheetUrl) {
           explanation: explanation
         };
       });
+      // ★★★ ここでシャッフル！ ★★★
+      quizData = shuffle(quizData);
+      // ✂️ ★ここで10問だけにするよ！ 
+      quizData = quizData.slice(0, 10);
       showQuestion(currentIndex); // 最初の問題を表示するよ！
     });
+}
+
+// 🔀 配列の中身をランダムに並べ替える関数だよ（Fisher–Yates シャッフル）
+function shuffle(array) {
+  // 配列の最後の要素から順番に入れ替えていくよ
+  for (let i = array.length - 1; i > 0; i--) {
+
+    // 0〜i のあいだでランダムな位置をえらぶよ
+    const j = Math.floor(Math.random() * (i + 1));
+
+    // 🎲 えらんだ位置の要素と入れ替えるよ（分割代入でスッキリ書ける！）
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  // ランダムに並び替えた配列を返すよ
+  return array;
 }
 
 // 🖼️ 問題を1問ずつ画面に出す関数だよ
@@ -154,7 +173,13 @@ window.checkAnswer = function(selectedIndex) {
 
   // 📚 解説を表示するよ
   resultText += `<p>${current.explanation}</p>`;
-
+  // 🧮 残り問題数を計算するよ
+  const remaining = quizData.length - (currentIndex + 1);
+  // 🔢 残り何問かを表示するよ
+  if (remaining > 0) {
+  resultText += `<p style="color:#555;">あと <span style="font-weight:bold;">${remaining}</span> 問</p>`;
+  }
+      
   // 🛤️ 次の問題があるかどうか調べて、ボタンを変えるよ
   if (currentIndex < quizData.length - 1) {
     resultText += `
